@@ -1,6 +1,6 @@
 <launch>
 
- <param name="robot_description" textfile="$(find youbot_description)/robots/youbot.urdf.xacro"/>
+ <param name="robot_description" textfile="$(find wro_gazebo)/models/youbot/youbot.urdf"/>
 
   <!-- Load joint controller configurations from YAML file to parameter server -->
   <rosparam file="$(find wro_control)/config/youbot_config.yaml" command="load"/>
