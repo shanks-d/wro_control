@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-# license removed for brevity
+# Example code for control of the robot
+# make sure that this is running during your simulation
 import rospy
 from std_msgs.msg import Float64
 from geometry_msgs.msg import Twist
@@ -14,7 +15,7 @@ def talker():
     arm_5 = rospy.Publisher('/youbot/joint5_position_controller/command', Float64, queue_size=10)
     velocity_publisher = rospy.Publisher('/youbot/cmd_vel', Twist, queue_size=10)
     vel_msg = Twist()
-    vel_msg.linear.x = 0
+    vel_msg.linear.x = -0.5
     vel_msg.linear.y = 0
     vel_msg.linear.z = 0
     vel_msg.angular.x = 0
