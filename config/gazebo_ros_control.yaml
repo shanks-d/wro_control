@@ -1,0 +1,18 @@
+/gazebo_ros_control:
+  pid_gains:
+    youbot__wheel_joint_fr:
+      p: 100.0
+      i: 0.01
+      d: 10.0
+    youbot__wheel_joint_fl:
+      p: 100.0
+      i: 0.01
+      d: 10.0
+    youbot__wheel_joint_br:
+      p: 100.0
+      i: 0.01
+      d: 10.0
+    youbot__wheel_joint_bl:
+      p: 100.0
+      i: 0.01
+      d: 10.0
