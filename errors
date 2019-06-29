@@ -1,0 +1,26 @@
+/------------28th June 2019----------------/
+changeLog by @pradeep
+--------------------------------------------
+Added wro_control_teleop.cpp node in src folder
+--------------------------------------------
+Uncomment the below code in CmakeLists.txt
+
+include_directories(
+ include
+ ${catkin_INCLUDE_DIRS}
+)
+--------------------------------------------
+Add/Replace the following in CmakeLists.txt:
+1) find_package(catkin REQUIRED COMPONENTS geometry_msgs roscpp roslib std_msgs)
+2) add_executable(wro_control_teleop src/wro_control_teleop.cpp)
+3) target_link_libraries(wro_control_teleop ${catkin_LIBRARIES})
+4) add_dependencies(wro_control_teleop wro_control_gencpp)
+--------------------------------------------
+Built the new wro_control_teleop.cpp node
+--------------------------------------------
+Uncommented code related to velocity_publisher in joint_control.py
+--------------------------------------------
+Deleted keyboard_teleop.py
+--------------------------------------------
+
+
