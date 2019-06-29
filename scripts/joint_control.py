@@ -15,7 +15,7 @@ def talker():
     arm_5 = rospy.Publisher('/youbot/joint5_position_controller/command', Float64, queue_size=10)
     velocity_publisher = rospy.Publisher('/youbot/cmd_vel', Twist, queue_size=10)
     vel_msg = Twist()
-    vel_msg.linear.x = -0.5
+    vel_msg.linear.x = 0
     vel_msg.linear.y = 0
     vel_msg.linear.z = 0
     vel_msg.angular.x = 0
@@ -25,15 +25,16 @@ def talker():
     rate = rospy.Rate(10) # 10hz
     while not rospy.is_shutdown():
         hello_str = "hello world %s" % rospy.get_time()
-        position = math.pi/6
-        velocity = 0.0
+        angle = 65
+        position = angle*math.pi/180
+        velocity = math.pi/2
         rospy.loginfo(position)
         arm_0.publish(position)
-        arm_1.publish(position)
-        arm_2.publish(position)
-        arm_3.publish(position)
-        arm_4.publish(position)
-        arm_5.publish(position)
+        arm_1.publish(3)                       # base roll joint (0 - 5.8)
+        arm_2.publish(position)                # shoulder joint (0 - 2.7)
+        arm_3.publish(-0.95*position)          # elbow joint (-5.18 - 0)
+        arm_4.publish(1.6*position)            # wrist pitch (0 - 3.5)
+        arm_5.publish(3)                       # wrist roll (0 - 5.8)
         velocity_publisher.publish(vel_msg)
         rate.sleep()
 
