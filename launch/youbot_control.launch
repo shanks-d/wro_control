@@ -7,9 +7,13 @@
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
     output="screen" ns="/youbot" args="joint0_position_controller joint1_position_controller joint2_position_controller joint3_position_controller joint4_position_controller joint5_position_controller joint_state_controller"/>
-
   <!-- convert joint states to TF transforms for rviz, etc -->
-  <node pkg="robot_state_publisher" type="state_publisher" name="robot_state_publisher" output="screen" />
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen" >
+    <param name="publish_frequency" type="double" value="30.0" />
+  </node>
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+
+  <arg name="rvizconfig" default="$(find wro_control)/rviz/wro.rviz"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)"/>
 
 </launch>
